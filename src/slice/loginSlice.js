@@ -6,8 +6,10 @@ const initialState = {
   data: [{}]
 }
 
- //const token = 'dc698c58de090c5503185674062de95340fef996'
-
+ const token = 'dc698c58de090c5503185674062de95340fef996'
+ 
+ localStorage.setItem('token', token)
+ localStorage.getItem('token')
 export const loginUser = createAsyncThunk(
   'loginUser',
   async (data) =>{
@@ -17,6 +19,7 @@ export const loginUser = createAsyncThunk(
             "method": "POST",
             "headers":{
               "Accept":'application/json',
+              "Authorization":`token ${token}`,
               "Content-Type":'application/json',
             },
             "data": data

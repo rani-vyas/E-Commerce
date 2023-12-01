@@ -7,28 +7,39 @@ const initialState = {
   isAuthenticated : false, 
 }
 const token = 'dc698c58de090c5503185674062de95340fef996';
+localStorage.setItem('token' ,token)
 export const fetchUserById = createAsyncThunk(
     'fetchId',
     async () =>{
     //debugger;
+    try{
+      if(!token){
+        throw new Error('no token!')
+      }
+    
     const {data} = await axios.get('http://127.0.0.1:8000/category/',{
       headers:{
-       'Authorization':`token ${token}`,
+       'Authorization':`token ${ token }`,
         'Content-Type': 'application/json',
         'Accept' : 'application/json'
       }
     });
     return data.results;
+  }catch (error){
+    throw(error)
+  }
     }
 )
 export const categorySlice = createSlice({
     name:'ShowCategory',
     initialState,
     reducers:{
-       showCategory(state){
-//debugger;
+       showCategory(state,{payload}){
+if(payload.token){
+  localStorage.getItem('token' )
+}
             state.isAuthenticated = true;
-            return state;
+           // return state;
             //return { ...state, isAuthenticated: true };
         },
     },

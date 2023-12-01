@@ -9,13 +9,15 @@ export const Products = () =>{
  const data = useSelector(state => state.Product.data)
  const dispatch = useDispatch()
 
- useEffect(()=>{
+/* useEffect(()=>{
     //debugger;
   dispatch(fetchProductById({}))
- },[])
+ },[])*/
+ dispatch(fetchProductById({}))
  const handleAddToCart = (product) => {
+    debugger;
   dispatch(addtoCart(product));
-//   console.log(product)
+ console.log(product)
 };
 
     return(

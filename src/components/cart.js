@@ -40,32 +40,31 @@ const buyNow = (orders)=>{
   dispatch(PlaceOrder(orders))
 }
   const data = useSelector(state => state.carts.Cart)
-  console.log('cartitem:',data)
+ // console.log('cartitem:',data)
   const dispatch = useDispatch()
 
   const handleRemoveFromCart = (itemId) => {
     dispatch(removeFromCart(itemId));
   };
   const cartdata = {
-    user,
-    product,
-    product_qty
+    'user':user,
+    product:1,
+    product_qty:parseInt(product_qty),
   }  
   dispatch(fetchuserById(cartdata))
     return(
       <>
-       <h2>xyz</h2>
+       
       <h2 style={{textAlign:'center'}}>ADD TO CART</h2>
         <div style={{margin:'20px', width:'40%'}}> 
         {data.map((item,index)=>
         <div key={index} style={{border:'2px solid black',backgroundColor:'white' , margin:'20px'}}>
         {/*item.id*/}
-
+        <h2><img src={item.image} alt="img" style={{width:'30%'}}/></h2>
         <h2 style={{margin:'20px'}}>{item.user}</h2>
         <h2 style={{margin:'20px'}}>{item.product}</h2>
-        <h2><img src={item.image} alt="img" style={{width:'30%'}}/></h2>
         <h2 style={{margin:'20px'}}>{item.product_qty}</h2>
-        <h4 style={{margin:'20px'}}>{item.created_at}</h4>
+        {/*<h4 style={{margin:'20px'}}>{item.created_at}</h4>*/}
 
         <button type="button"  id='demo' onClick={() =>handleDecrement(item.id)} style={{width:'3%', padding:'5px', margin:'20px 20px'}}>{item.product_qty}-</button>
         <h6 style={{ display:'inline', padding:'10px' , width:'5%',backgroundColor:'white'}}>{ItemQuantities[item.id] || 1}</h6>

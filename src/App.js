@@ -43,7 +43,7 @@ function App(){
     <div>
       
       <Provider store={store}>  
-      console.log(store);
+     
 
      <Router>
       <Routes>

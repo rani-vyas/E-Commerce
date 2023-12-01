@@ -5,7 +5,8 @@ import axios from "axios";
 const initialState = {
     order :[]
 }
-const token = ' dc698c58de090c5503185674062de95340fef996';
+const token = '9e4f5ece5043831600098c3c32f6e467007d5b05';
+//localStorage.setItem('token' , token)
 export const fetchOrders = createAsyncThunk(
     'POSTDATA',
     async(orders)=>{

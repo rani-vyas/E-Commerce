@@ -48,10 +48,10 @@ const [password2,setConfirmPassword] = useState('');
         <h5>registerUser</h5>
         <div>
             {Userdata.map((item,index)=>
-                 <form style={{border: '1px solid black', width:'10%', margin:'10% 10%'}} key={index}>
+                 <form  key={index}>
                     <label>Username:</label>
                     <input 
-                    id="nameId"
+                        id="nameId"
                         type="text"
                         placeholder="Username"
                         value={Username}
@@ -59,14 +59,13 @@ const [password2,setConfirmPassword] = useState('');
                     />
                      <label>Email:&#128231;</label>
                      <input 
-                     id="mailId"
-                         type = "email"
-                         placeholder = "Email"
-                         value={email}
-                         onChange={(e) => setEmail(e.target.value)}
+                        id="mailId"
+                        type = "email"
+                        placeholder = "Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                      /> 
-                     <br/>
-                     <br/>
+                     
                      <label>Password:&#128274;</label>
                      <input
                      id="passwordId"
@@ -77,14 +76,13 @@ const [password2,setConfirmPassword] = useState('');
                      />
                      <label>Confirm Password:</label>
                      <input
-                     id="confirmpasswordId"
+                        id="confirmpasswordId"
                         type="password"
                         placeholder="Confirm Password"
                         value={password2}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                      />
-                     <br/>
-                     <br/>
+                     
                      
                      <button  type="button" onClick={handleRegister}><Link to='/login'>Register</Link></button>
                 </form>
