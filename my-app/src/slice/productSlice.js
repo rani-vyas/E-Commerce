@@ -30,7 +30,7 @@ export const ProductSlice = createSlice({
             if(payload.token){
                 localStorage.getItem('token')
             }
-            return state
+            return state .data
         },
        
     },

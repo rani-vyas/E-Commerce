@@ -33,7 +33,7 @@ export const OrderSlice = createSlice({
             return state;
         },*/
         PlaceOrder:(state,action)=>{
-            debugger;
+           // debugger;
            const newOrder = action.payload;
             state.order.push(newOrder);
         },
