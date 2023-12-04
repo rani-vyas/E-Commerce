@@ -6,7 +6,7 @@ const initialState = {
   data: [{}]
 }
 
- const token = 'dc698c58de090c5503185674062de95340fef996';
+ const token = 'dc698c58de090c5503185674062de95340fef996'
  
  localStorage.setItem('token', token)
  localStorage.getItem('token')
