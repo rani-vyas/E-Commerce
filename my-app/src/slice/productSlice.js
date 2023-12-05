@@ -6,31 +6,30 @@ const initialState = {
     isUserAuthenticated : false,
     data:[]
 }
-const token = 'dc698c58de090c5503185674062de95340fef996'
- localStorage.setItem('token' , token)
+
 export const fetchProductById = createAsyncThunk(
     'fetchproduct',
     async()=>{
      //   debugger;
+     
+     
     const {data} =  await axios.get('http://127.0.0.1:8000/product/',{
         headers:{
-            'Authorization':` Token ${ token } `,
+           // 'Authorization':` Token ${ token } `,
             'Content-Type' : 'application/json',
             'Accept':'application/json'
         }
     })
     return data.results
-    }
+    
+}
 )
 export const ProductSlice = createSlice({
     name:'Product',
     initialState,
     reducers:{
-        showProduct(state , {payload}){
-            if(payload.token){
-                localStorage.getItem('token')
-            }
-            return state .data
+        showProduct(state , action){
+            return state.data = action.payload;
         },
        
     },

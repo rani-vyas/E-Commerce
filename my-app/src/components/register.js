@@ -86,6 +86,7 @@ const [password2,setConfirmPassword] = useState('');
                      
                      
                      <button  type="button" onClick={handleRegister}><Link to='/login'>Register</Link></button>
+                     
                 </form>
             )}
         </div>

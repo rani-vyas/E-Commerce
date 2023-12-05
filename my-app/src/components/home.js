@@ -39,8 +39,8 @@ export const Home = () => {
         </div>        
 
 <div className="Img_Container">
-                  {data.map((item,index)=>
-          
+  {Array.isArray(data) ? (
+                  data.map((item,index)=>(
               <div className="image-div" key={index}>
                 
                 <img
@@ -54,7 +54,11 @@ export const Home = () => {
               </Link>
             </button>
               </div>
-            )}
+                  )) 
+                  ):(
+                    <p>data is not availabel</p>
+                  )}
+  
         </div>
         <div className="footer-div">
         <div className="aboutus-div">
@@ -87,6 +91,7 @@ export const Home = () => {
         </div>
 
       </div>
+      
       </div>
       
   </>

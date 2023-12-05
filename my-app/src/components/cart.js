@@ -70,7 +70,7 @@ const handleDecrement = (itemId) => {
     debugger;
     const ordersData = {
       "user": user,
-      product:2,
+      product:1,
       product_qty: parseInt(product_qty),
     };
   

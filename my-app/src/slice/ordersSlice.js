@@ -3,25 +3,26 @@ import axios from "axios";
 //import React from "react";
 
 const initialState = {
-    order :[]
+    order :[],
+    isAuthenticated : false
 }
-const token = '9e4f5ece5043831600098c3c32f6e467007d5b05';
+//const token = '9e4f5ece5043831600098c3c32f6e467007d5b05';
 //localStorage.setItem('token' , token)
 export const fetchOrders = createAsyncThunk(
     'POSTDATA',
-    async(orders)=>{
+    async(orders)=>{ 
         const {UserOrders} = await axios({    
             "url":'http://127.0.0.1:8000/order/',
             "method":"POST",
             "headers":{
                 "Accept":'application/json',
-                "Authorization":`token ${token}`,
+                //"Authorization":`token ${token}`,
                 "Content-Type":"application/json"
             },
             "data":orders
         })
         return UserOrders
-    }
+}
 )
 export const OrderSlice = createSlice({
     
@@ -44,8 +45,12 @@ export const OrderSlice = createSlice({
     },
     extraReducers:(builder)=>{
         //debugger;
-        builder.addCase(fetchOrders.fulfilled,(state,action)=>{
-            state.order = action.payload;
+        builder.addCase(fetchOrders.fulfilled,(state,{payload})=>{
+            if(payload.token){
+                localStorage.getItem('token')
+            }
+            //state.order = action.payload;
+            state.isAuthenticated = true;
         })
     }
 

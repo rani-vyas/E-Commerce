@@ -6,23 +6,23 @@ const initialState = {
     isAuthenticated : false,
     Cart:[]
 }
-const token = 'dc698c58de090c5503185674062de95340fef996'
-localStorage.setItem('token' , token )
+//const token = 'dc698c58de090c5503185674062de95340fef996'
+//localStorage.setItem('token' , token )
 export  const fetchuserById = createAsyncThunk(
     'PostData',
-    async(cartItems)=>{  
+    async(cartItems)=>{   
     const productdata = await axios({
         "url":'http://127.0.0.1:8000/cart/',
         "method":"POST",
         "headers":{
-            'Authorization': `token ${ token } `,
+            //'Authorization': `token ${ token } `,
             "Accept":'application/json',
             "Content-Type":"application/json"
         },
         "data":cartItems
     })
     return productdata.data;
-}
+    }
 )
 export const cartSlice = createSlice({
     name:'Cart',
