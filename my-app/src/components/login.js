@@ -19,9 +19,12 @@ export const LogIn = ({token}) =>{
   console.log(logUser);
   const dispatch = useDispatch();
   
-  const Clicklogin = async(e) =>{
+  const handlelogin = async(e) =>{
     //debugger;
     e.preventDefault();
+    const loggedIn = () =>{
+      setName(loggedIn)
+    }
   try{
      // debugger;
       dispatch(loginSuccess())
@@ -50,7 +53,7 @@ return(
   <>    
 <div className="admin-div">
 {logUser?.map((item,index) =>
-            <form className="form-class" key={index} >
+            <form className="form-class" key={index} onSubmit={handlelogin} >
               <label>username :<span>&#128231;</span></label>
                 <input 
                 id="username"
@@ -92,7 +95,7 @@ return(
                   <br/>
                   <br/>
                   <div className="btn-class">
-                  <button id="btn-id" type="button" onClick={ Clicklogin} ><Link to='/home'>Log In</Link></button>
+                  <button id="btn-id" type="button" onClick={ handlelogin} ><Link to='/home'>Log In</Link></button>
                 </div>
           </form>
 )}

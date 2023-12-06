@@ -12,10 +12,11 @@ export const fetchProductById = createAsyncThunk(
     async()=>{
      //   debugger;
      
-     
+     const token = localStorage.getItem('token')
+     console.log('token=' , token)
     const {data} =  await axios.get('http://127.0.0.1:8000/product/',{
         headers:{
-           // 'Authorization':` Token ${ token } `,
+            'Authorization':` Token ${ token } `,
             'Content-Type' : 'application/json',
             'Accept':'application/json'
         }

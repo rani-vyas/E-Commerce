@@ -4,27 +4,31 @@ import axios from "axios"
 const initialState = {
   isUserlogin : false,
   data: [{}]
-}
-
- //const token = localStorage.getItem('token')
- //localStorage.setItem('token',token)
+} 
 export const loginUser = createAsyncThunk(
   'loginUser',
   async (data) =>{
-  
-  
+   //debugger;
+  try{
     const Userdata = await axios({
       "url": 'http://127.0.0.1:8000/login/',
             "method": "POST",
             "headers":{
               "Accept":'application/json',
-              //"Authorization":`token ${token}`,
               "Content-Type":'application/json',
             },
             "data": data
-    }) 
-   return Userdata;
- 
+    }) ;
+    
+const token = Userdata.data.key;
+console.log(token)
+if (token) {
+  localStorage.setItem('token', token);
+}
+  return Userdata;
+  }catch(error){
+throw error
+  }
 }
 )
 export const loginUserSlice = createSlice({
@@ -32,16 +36,14 @@ export const loginUserSlice = createSlice({
         initialState,
         reducers:{
           loginSuccess:(state,action)=>{
-           // debugger;
           state.isUserlogin = true;
           state.data = action.payload;
           }
         },
         extraReducers:(builder) =>{
-          //debugger;
           builder.addCase(loginUser.fulfilled,(state,action)=>{
            state.data = action.payload
-          // state.isUserlogin = true;
+           state.isUserlogin = true;
           }).addCase(loginUser.rejected,(state,action)=>{
             state.isUserlogin = false;
             state.data = action.error.message || 'userlogin Failed'

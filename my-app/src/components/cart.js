@@ -13,6 +13,7 @@ const [user,setUser] = useState('');
 const [product,setProduct] =useState('');
 const [product_qty,setproduct_qty] = useState(1)
 //const [image,setImage] = useState('')
+
 //incrementproduct
 const handleIncrement = (itemId) => {
   setItemQuantites((prevQuantities) => {
@@ -49,42 +50,33 @@ const handleDecrement = (itemId) => {
     debugger;
     dispatch(PlaceOrder(order))
    }
-  /*const cartdata = {
-    'user':user,
-    product:1,
-    product_qty:parseInt(product_qty),
-  }  
-  dispatch(fetchuserById(cartdata))
-  buyNow(item)*/
- /* const handlePlaceOrder = (item) => {
-    const ordersData = {
-      user: user,
-      product: 1,
-      product_qty: parseInt(product_qty),
-    };
-    dispatch(fetchuserById(ordersData));
-    buyNow(ordersData);
-  };*/
+ 
+ 
 
-  const handlePlaceOrder = async (item) => {
+ const handlePlaceOrder = async (item) => {
     debugger;
     const ordersData = {
       "user": user,
+      //image:image,
       product:1,
       product_qty: parseInt(product_qty),
     };
   
     try {
-      // Dispatch fetchuserById
-      await dispatch(fetchuserById(ordersData));
-  
-      // Dispatch buyNow
-      dispatch(buyNow(ordersData));
+        dispatch(fetchuserById(ordersData));
+     // dispatch(buyNow(ordersData));
+     // console.log(buyNow)
     } catch (error) {
       console.error("Error placing order:", error);
     }
   };
+  const handleUserChange = (event) => {
+    setUser(event.target.value);
+  };
   
+  const handleProductQtyChange = (event) => {
+    setproduct_qty(event.target.value);
+  };
     return(
       <>
        
@@ -92,11 +84,15 @@ const handleDecrement = (itemId) => {
         <div style={{margin:'20px', width:'40%'}}> 
         {data.map((item,index)=>
         <div key={index} style={{border:'2px solid black',backgroundColor:'white' , margin:'20px'}}>
-        {item.id}
-        <h2 style={{margin:'20px'}}>{item.user}</h2>
+        
+       {/* <h2 style={{margin:'20px'}}>{item.user}</h2>*/}
+        <input type="text" value={user} onChange={handleUserChange} />
+
         <h2><img src={item.image} alt="img" style={{width:'40%', marginLeft:'10px'}}/></h2>
         <h2 style={{margin:'20px'}}>{item.product}</h2>
-        <h2 style={{margin:'20px'}}>{item.product_qty}</h2>
+        <label>Product</label>
+        <input type="number"  value={product_qty} onChange={handleProductQtyChange} />
+       {/* <h2 style={{margin:'20px'}}>{item.product_qty}</h2>
         {/*<h4 style={{margin:'20px'}}>{item.created_at}</h4>*/}
 
         <button type="button"  id='demo' onClick={() =>handleDecrement(item.id)} style={{width:'3%', padding:'5px', margin:'20px 20px'}}>{item.product_qty}-</button>

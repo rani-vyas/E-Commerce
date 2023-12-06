@@ -6,27 +6,31 @@ import { Link } from "react-router-dom";
 
 
 export function Orders (){
+
     const [user,setUser] = useState('')
     const [product_name,setproduct_name] = useState('')
     const [total_product,setTotal_product] = useState('')
-    //const [total_amount,setTotal_amount] = useState('')
-    //const [transaction_id,setTransaction_id] = useState('')
-    const userOrders = useSelector(state => state.Orders.order || [])
-    console.log('orders:',userOrders)
-    const dispatch = useDispatch()
+
+    const userOrders = useSelector(state => state.Orders.order || []);
+
+    const dispatch = useDispatch();
     
-    const orderItems = {
+    /*const orderItems = {
         'user':user,
         product_name :'top',
         total_product: 1,
-        //total_amount
-    }
- //   dispatch(fetchOrders(orderItems))
- dispatch({
-    type : 'PLACEORDER',
-    payload : orderItems
- })
-    
+        
+    }*/
+   //dispatch(fetchOrders(orderItems))
+//console.log(fetchOrders)
+useEffect(() => {
+    const orderItems = {
+      user: user,
+      product_name: "top",
+      total_product: 1,
+    };
+    dispatch(fetchOrders(orderItems));
+  }, [dispatch, user]);
     return(
         <>
         <h1>Orders</h1>
@@ -37,7 +41,6 @@ export function Orders (){
             <h3>{item.user}</h3>
             <h3>{item.product_name} </h3>
             <h3>{item.total_product}</h3>
-        {/*   <h3>Total Amount: {item.total_amount}</h3>*/}
             <button type="button"  style={{width:'40%',padding:'10px', backgroundColor:'cadetblue'}}><Link to='/payment'>Continue</Link></button>
             </div>
             )}

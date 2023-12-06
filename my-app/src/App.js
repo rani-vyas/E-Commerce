@@ -26,16 +26,6 @@ import { LogIn } from "./components/login";
 import { Products } from "./components/product";
 
 
-
-
-/*function setToken(userToken){
-  localStorage.setItem('token',JSON.stringify(userToken))
-    }
-    function getToken(){
-      const tokenString = localStorage.getItem('token')
-      const userToken = JSON.parse(tokenString)
-      return userToken?.token
-    }*/
 function App(){
 
   
@@ -59,7 +49,6 @@ function App(){
           <Route path="/womens" element={<WomensCategory/>}/>
           <Route path="/mensfashion" element={<MensFashion/>}/>
           <Route path='/kids' element={<KidsClothes/>}/>
-          
           <Route path="/cart" element={< Cart/>}/>      
           <Route path="/help"  element={<Helpdesk/>}/>
           <Route path="/social" element={<Social/>}/>

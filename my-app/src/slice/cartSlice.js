@@ -10,12 +10,13 @@ const initialState = {
 //localStorage.setItem('token' , token )
 export  const fetchuserById = createAsyncThunk(
     'PostData',
-    async(cartItems)=>{   
+    async(cartItems)=>{  
+        const token = localStorage.getItem('token') 
     const productdata = await axios({
         "url":'http://127.0.0.1:8000/cart/',
         "method":"POST",
         "headers":{
-            //'Authorization': `token ${ token } `,
+            'Authorization': `token ${ token } `,
             "Accept":'application/json',
             "Content-Type":"application/json"
         },

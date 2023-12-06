@@ -15,13 +15,14 @@ export const Home = () => {
     useEffect(()=>{
       dispatch(fetchUserById())
     },[])
-    //dispatch(fetchUserById())
+   // dispatch(fetchUserById())
   return (
     <>
     <div className="Main_Container">
       
         <div className="mid-one">
             {/*<h1 style={{backgroundColor:'white', color:'black'}}>𝐹𝒶𝓈𝒽𝒾𝑜𝓃𝐹𝓇𝑒𝓃𝓏𝓎!</h1>*/}
+            <button className="btn-1">LOGOut</button>
           <button className="btn-1"><Link to='/login' style={{textDecoration: 'none', color:'black',fontSize:'1rem'}}>LogIn</Link></button>
           <button className="btn-1"><Link to='/register' style={{textDecoration: 'none', color:'black',fontSize:'1rem'}}>Register</Link></button>
           <button className="btn-1"><Link to ='/product' style={{textDecoration: 'none', color:'black'}}> Product </Link> </button>
@@ -39,8 +40,8 @@ export const Home = () => {
         </div>        
 
 <div className="Img_Container">
-  {Array.isArray(data) ? (
-                  data.map((item,index)=>(
+ 
+                 { data.map((item,index)=>
               <div className="image-div" key={index}>
                 
                 <img
@@ -54,9 +55,7 @@ export const Home = () => {
               </Link>
             </button>
               </div>
-                  )) 
-                  ):(
-                    <p>data is not availabel</p>
+                
                   )}
   
         </div>
