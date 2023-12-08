@@ -29,22 +29,22 @@ export const OrderSlice = createSlice({
     name:'Order',
     initialState,
     reducers:{
-      
         PlaceOrder:(state,action)=>{
-           // debugger;
+            debugger;
            const newOrder = action.payload;
-            state.order.push(newOrder);
+          state.order.push(newOrder);
         },
        
     },
-    extraReducers:(builder)=>{
+   /* extraReducers:(builder)=>{
         //debugger;
         builder.addCase(fetchOrders.fulfilled,(state,action)=>{
             state.order = action.payload;
             state.isAuthenticated = true;
+            
         })
     }
-
+*/
 })
 export const {showOrder,PlaceOrder,ContinueOrder} = OrderSlice.actions;
 export default OrderSlice.reducer;

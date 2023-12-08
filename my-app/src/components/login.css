@@ -27,11 +27,16 @@ body{
     padding: 15px; 
     border: none; 
     background-color: darkgray;
+    border-radius: 10px;
 }
 #btn-id{
     padding: 15px;
     background-color: rgb(231, 53, 178);
     border: none;
+    border-radius: 35px; 
+}
+#btn-id:hover{
+    background-color: rgb(231, 53 ,178);
 }
 /*#label-checkbox{
     border: 1px solid black;

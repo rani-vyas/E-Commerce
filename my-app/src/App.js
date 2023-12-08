@@ -24,6 +24,7 @@ import { Register } from "./components/register";
 import { LogOut } from "./components/logout";
 import { LogIn } from "./components/login";
 import { Products } from "./components/product";
+import { Frontpage } from "./components/signuplogin";
 
 
 function App(){
@@ -38,7 +39,8 @@ function App(){
      <Router>
       <Routes>
         <Route path="/">  
-        <Route index element={<Register />} />
+        <Route index element={<Frontpage />} />
+        <Route path="/signuplogin" element ={<Frontpage/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/categories" element={<Category/>}/>
           <Route path="/login" element={<LogIn/>}/>

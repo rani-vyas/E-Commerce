@@ -2,28 +2,27 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductById } from "../slice/productSlice";
-import { addtoCart, getProduct } from "../slice/cartSlice";
+import { addtoCart } from "../slice/cartSlice";
 import './womens.css';
 export const Products = () =>{
   
- const data = useSelector(state => state.Product.data)
+ const data = useSelector((state) => state.Product.data)
  const dispatch = useDispatch()
 
-/* useEffect(()=>{
+ useEffect(()=>{
     //debugger;
   dispatch(fetchProductById({}))
- },[])*/
+ },[])
  
- const handleAddToCart = (productId) => {
+ const handleAddToCart = (product_id) => {
     debugger;
-  //dispatch(addtoCart(productId));
-  dispatch(fetchProductById(productId))
- console.log(productId)
+  dispatch(addtoCart(product_id))
 };
 
     return(
         <>
             {data.map((item,index)=>
+            
                 <div className="card" key={index} style={{width:'20%', marginTop:'50px', float:'left'}}>
                    
                     <img src={item.image} className="top&tees" alt="Denim Jeans" style={{width:"100%", border:'1px solid black'}}/>

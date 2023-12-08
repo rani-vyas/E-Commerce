@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserById } from "../slice/categorySlice";
+import logoutSlice from "../slice/logoutSlice";
 
 
 
@@ -16,13 +17,14 @@ export const Home = () => {
       dispatch(fetchUserById())
     },[])
    // dispatch(fetchUserById())
+  
   return (
     <>
     <div className="Main_Container">
       
         <div className="mid-one">
             {/*<h1 style={{backgroundColor:'white', color:'black'}}>𝐹𝒶𝓈𝒽𝒾𝑜𝓃𝐹𝓇𝑒𝓃𝓏𝓎!</h1>*/}
-            <button className="btn-1">LOGOut</button>
+            <button className="btn-1"><Link to='/logout' style={{textDecoration: 'none', color:'black',fontSize:'1rem'}}>LogOut</Link></button>
           <button className="btn-1"><Link to='/login' style={{textDecoration: 'none', color:'black',fontSize:'1rem'}}>LogIn</Link></button>
           <button className="btn-1"><Link to='/register' style={{textDecoration: 'none', color:'black',fontSize:'1rem'}}>Register</Link></button>
           <button className="btn-1"><Link to ='/product' style={{textDecoration: 'none', color:'black'}}> Product </Link> </button>

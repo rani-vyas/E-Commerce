@@ -19,13 +19,22 @@ export const loginUser = createAsyncThunk(
             },
             "data": data
     }) ;
+    /*const userId = await axios.get('http://127.0.0.1:8000/user/',
+      {
+        headers:{
+          'Accept' : 'application/json',
+          'Authorization' : `token ${token}`
+        },
+        'data':data
+      },
+    )*/
     
 const token = Userdata.data.key;
 console.log(token)
 if (token) {
   localStorage.setItem('token', token);
 }
-  return Userdata;
+return Userdata;
   }catch(error){
 throw error
   }
@@ -36,8 +45,10 @@ export const loginUserSlice = createSlice({
         initialState,
         reducers:{
           loginSuccess:(state,action)=>{
+            debugger;
           state.isUserlogin = true;
           state.data = action.payload;
+          state.username = action.payload.username;
           }
         },
         extraReducers:(builder) =>{

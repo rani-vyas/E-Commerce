@@ -16,7 +16,7 @@ const [password2,setConfirmPassword] = useState('');
     console.log('password2:',confirmPassword)*/
 
     const Userdata = useSelector((state) => state.userRegister?.data || [{}]);
-   console.log('userData:',Userdata);
+    
 
     const dispatch = useDispatch();
 
@@ -42,14 +42,18 @@ const [password2,setConfirmPassword] = useState('');
               password2
             }  
             dispatch(registerUsers(data))
-          }       
+            dispatch(registerUsers(data));
+    } 
+     
+    
+           
 
     return(
         <>
         <h5>registerUser</h5>
         <div>
             {Userdata.map((item,index)=>
-                 <form  key={index} style={{border:'1px solid black' , marginLeft:'30%',marginTop:'10%', width:'50%' ,height:'30%'}}>
+                 <form  key={index} style={{border:'1px solid black',borderRadius:'10px' , marginLeft:'30%',marginTop:'10%', width:'50%' ,height:'30%',padding:'20px'}}>
                     <label>Username:</label>
                     <input 
                         id="nameId"
@@ -57,6 +61,7 @@ const [password2,setConfirmPassword] = useState('');
                         placeholder="Username"
                         value={Username}
                         onChange={(e) => setName(e.target.value)}
+                        required
                     />
                      <label>Email:&#128231;</label>
                      <input 
@@ -65,6 +70,7 @@ const [password2,setConfirmPassword] = useState('');
                         placeholder = "Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                      /> 
                      
                      <label>Password:&#128274;</label>
@@ -74,6 +80,7 @@ const [password2,setConfirmPassword] = useState('');
                          placeholder = "password"
                          value = {password1}
                          onChange={(e) => setPassword(e.target.value)}
+                         required
                      />
                      <label>Confirm Password:</label>
                      <input
@@ -82,11 +89,9 @@ const [password2,setConfirmPassword] = useState('');
                         placeholder="Confirm Password"
                         value={password2}
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
                      />
-                     
-                     
                      <button  type="button" onClick={handleRegister}><Link to='/login'>Register</Link></button>
-                     
                 </form>
             )}
         </div>

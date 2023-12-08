@@ -6,12 +6,12 @@ const initialState = {
     isAuthenticated : false,
     Cart:[]
 }
-//const token = 'dc698c58de090c5503185674062de95340fef996'
-//localStorage.setItem('token' , token )
-export  const fetchuserById = createAsyncThunk(
+
+export  const fetchCartData = createAsyncThunk(
     'PostData',
     async(cartItems)=>{  
         const token = localStorage.getItem('token') 
+        console.log('Carttoken:',token)
     const productdata = await axios({
         "url":'http://127.0.0.1:8000/cart/',
         "method":"POST",
@@ -25,13 +25,14 @@ export  const fetchuserById = createAsyncThunk(
     return productdata.data;
     }
 )
+
 export const cartSlice = createSlice({
     name:'Cart',
     initialState,
     reducers:{
         
         addtoCart:(state,action)=>{
-           debugger;
+           //debugger;
            state.isAuthenticated = true;
          const newItem = action.payload;
         state.Cart.push(newItem)
@@ -39,17 +40,20 @@ export const cartSlice = createSlice({
         removeFromCart: (state, action) => {
             const itemId = action.payload;
             state.Cart = state.Cart.filter((item) => item.id !== itemId);
-          }
+          },
+          setAuthenticated: (state, action) => {
+            state.isAuthenticated = action.payload;
+          },
     },
     extraReducers : (builder)=>{
-        builder.addCase(fetchuserById.fulfilled,(state,{payload})=>{
-            if(payload.token){
-                localStorage.getItem('token')
+        builder.addCase(fetchCartData.fulfilled,(state,{payload})=>{
+            if(payload.user){
+                state.isAuthenticated = true; 
             }
           // state.Cart = action.payload;
-            state.isAuthenticated = true; 
+           
     })
 }
 })
-export const {addtoCart, removeFromCart} = cartSlice.actions
+export const {addtoCart, removeFromCart,setAuthenticated} = cartSlice.actions
 export default cartSlice.reducer;

@@ -25,7 +25,7 @@ export function Orders (){
 //console.log(fetchOrders)
 useEffect(() => {
     const orderItems = {
-      user: user,
+      'user': user,
       product_name: "top",
       total_product: 1,
     };
