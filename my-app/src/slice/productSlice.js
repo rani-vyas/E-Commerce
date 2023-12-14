@@ -30,7 +30,6 @@ export const ProductSlice = createSlice({
     initialState,
     reducers:{
         showProduct(state , action){
-            debugger;
             return state.data = action.payload;
         },
        

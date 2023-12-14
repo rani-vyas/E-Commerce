@@ -9,7 +9,8 @@ export const LogIn = () =>{
   const [Username,setName] = useState('');
   const [email,setEmail]= useState('');
   const [password,setPassword]= useState('');
-  
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const logUser = useSelector((state) => state.loginUser?.data || [{}])
    const dispatch = useDispatch();
@@ -20,11 +21,24 @@ export const LogIn = () =>{
       setName(loggedIn)
     }
   try{
-      if(Username === '' || email === '' || password === ''){
-        return Error
-      }
+    let hasError = false;
+    let EmailFormat = /\S+@\S+\.\S+/;
+
+    if(email === ''){
+setEmailError('Please Enter Your Email')
+setEmailError = true
+    }else if (!EmailFormat.test(email)) {
+      setEmailError("Please enter an Valid email");
+      hasError = true;
+    }
+    if (password === "") {
+      setPasswordError("Please enter your password");
+      hasError = true;
+    }
+    if (hasError) {
+      return;
+    }
       dispatch(loginSuccess())
-      
       const logindata = {
         username: Username,
         email,
@@ -38,11 +52,12 @@ console.log(password)
     catch(error){
      alert('Error' + error.message)
     } 
-  }        
-
+  }   
   const handlelogOut = (logout) =>{
     dispatch(userLogout(logout))
   }
+  
+  
 return(
   <>    
 <div className="admin-div">
@@ -93,10 +108,11 @@ return(
                   <br/>
                   <br/>
                   <div className="btn-class">
-                  <button id="btn-id" type="submit" onClick={ handlelogin} ><Link  to='/home' style={{textDecoration:'none'}}>Log In</Link></button>
+                  <button id="btn-id" type="submit" onClick={(e) => handlelogin(e)} ><Link  to='/home'
+                   style={{textDecoration:'none'}}>Log In</Link></button>
                 </div>
                 <div className="btn1-class" style={{marginTop:'20%' , }}>
-                <button id="btn-id" type="submit" onClick={ handlelogOut}><Link>LogOut</Link></button>
+                <button id="btn-id" type="submit" onClick={(e) => handlelogOut(e)}><Link>LogOut</Link></button>
                 </div>
           </form>
 )}

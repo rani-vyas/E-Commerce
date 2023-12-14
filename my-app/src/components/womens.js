@@ -28,7 +28,7 @@ export const WomensCategory = () =>{
                         <h5>{item.description}</h5>
                         <h5>{item.price}</h5>
                     </div>
-                        <p><button onClick={()=>handleAddToCart(item)} style={{textDecoration:'none' }}><Link to='/cart' style={{textDecoration:'none'}}>Add Cart</Link></button></p>
+                        <p><button onClick={()=>handleAddToCart(item)} style={{textDecoration:'none',borderRadius:'10px' }}><Link to='/cart' style={{textDecoration:'none'}}>Add Cart</Link></button></p>
                         
                         {/*<p><button type="button" style={{width:'10%', padding:'10px', textDecoration:'none',
                          backgroundColor:'white', float:'left'}} onClick={AddToWishlist}><Link to='/wishlist' style={{textDecoration:'none'}}>&#128159;</Link></button></p>*/}

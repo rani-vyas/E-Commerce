@@ -14,15 +14,14 @@ export const Products = () =>{
   dispatch(fetchProductById({}))
  },[])
  
- const handleAddToCart = (product_id) => {
-    debugger;
-  dispatch(addtoCart(product_id))
+ const handleAddToCart = () => {
+  dispatch(addtoCart())
 };
 
     return(
         <>
             {data.map((item,index)=>
-            
+
                 <div className="card" key={index} style={{width:'20%', marginTop:'50px', float:'left'}}>
                    
                     <img src={item.image} className="top&tees" alt="Denim Jeans" style={{width:"100%", border:'1px solid black'}}/>
@@ -31,7 +30,7 @@ export const Products = () =>{
                         <h5>{item.description}</h5>
                         <h5>{item.price}</h5>
                     </div>
-                        <p><button onClick={()=>handleAddToCart(item)} style={{textDecoration:'none'}}><Link to='/cart' style={{textDecoration:'none'}}>Add Cart</Link></button></p>
+                        <p><button onClick={()=>handleAddToCart(item)} style={{textDecoration:'none',borderRadius:'10px'}}><Link to='/cart' style={{textDecoration:'none'}}>Add Cart</Link></button></p>
                         
                         {/*<p><button type="button" style={{width:'10%', padding:'10px', textDecoration:'none',
                          backgroundColor:'white', float:'left'}} onClick={AddToWishlist}><Link to='/wishlist' style={{textDecoration:'none'}}>&#128159;</Link></button></p>*/}

@@ -42,9 +42,10 @@
     background-color: wheat;
     float: right;
     margin: 10px;
+    border-top-right-radius: 10px;
   }
  btn-1:hover{
-  background-color: orangered;
+  background-color: rgb(219, 162, 142);
  }
   .form-control {
     /*border: 2px solid rgb(81, 213, 123);*/

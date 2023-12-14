@@ -30,7 +30,7 @@ export const OrderSlice = createSlice({
     initialState,
     reducers:{
         PlaceOrder:(state,action)=>{
-            debugger;
+            
            const newOrder = action.payload;
           state.order.push(newOrder);
         },
@@ -41,10 +41,11 @@ export const OrderSlice = createSlice({
         builder.addCase(fetchOrders.fulfilled,(state,action)=>{
             state.order = action.payload;
             state.isAuthenticated = true;
-            
+            const newOrder = action.payload;
+            state.order.push(newOrder);
         })
     }
 */
 })
-export const {showOrder,PlaceOrder,ContinueOrder} = OrderSlice.actions;
+export const {PlaceOrder} = OrderSlice.actions;
 export default OrderSlice.reducer;

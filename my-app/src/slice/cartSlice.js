@@ -14,7 +14,7 @@ export  const fetchCartData = createAsyncThunk(
         console.log('Carttoken:',token)
     const productdata = await axios({
         "url":'http://127.0.0.1:8000/cart/',
-        "method":"POST",
+        'method':'POST',
         "headers":{
             'Authorization': `token ${ token } `,
             "Accept":'application/json',
@@ -32,7 +32,7 @@ export const cartSlice = createSlice({
     reducers:{
         
         addtoCart:(state,action)=>{
-           //debugger;
+           
            state.isAuthenticated = true;
          const newItem = action.payload;
         state.Cart.push(newItem)

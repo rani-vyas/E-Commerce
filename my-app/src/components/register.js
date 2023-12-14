@@ -58,7 +58,7 @@ const [password2,setConfirmPassword] = useState('');
                     <input 
                         id="nameId"
                         type="text"
-                        placeholder="Username"
+                        placeholder="  Enter Username"
                         value={Username}
                         onChange={(e) => setName(e.target.value)}
                         required
@@ -67,7 +67,7 @@ const [password2,setConfirmPassword] = useState('');
                      <input 
                         id="mailId"
                         type = "email"
-                        placeholder = "Email"
+                        placeholder = "  Enter Your Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -77,7 +77,7 @@ const [password2,setConfirmPassword] = useState('');
                      <input
                      id="passwordId"
                          type = "password"
-                         placeholder = "password"
+                         placeholder = "  Enter Your Password"
                          value = {password1}
                          onChange={(e) => setPassword(e.target.value)}
                          required
@@ -86,12 +86,12 @@ const [password2,setConfirmPassword] = useState('');
                      <input
                         id="confirmpasswordId"
                         type="password"
-                        placeholder="Confirm Password"
+                        placeholder="  Confirm Password"
                         value={password2}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                      />
-                     <button  type="button" onClick={handleRegister}><Link to='/login'>Register</Link></button>
+                     <button  type="button" onClick={handleRegister} style={{width:'40%' , marginLeft:'40%', padding:'2px', marginTop:'5%', borderRadius:'10px' , height :'50px', backgroundColor:'lightblue'}}><Link to='/login' style={{textDecoration:'none' , color:''}}>Register</Link></button>
                 </form>
             )}
         </div>

@@ -7,6 +7,7 @@ const initialState = {
 export const userLogout = createAsyncThunk(
     'userLogout',
     async () =>{
+       
         const logoutUser = await axios({
             'url' : 'http://127.0.0.1:8000/logout/',
             'method' : 'POST',
@@ -15,16 +16,17 @@ export const userLogout = createAsyncThunk(
                 "Content-Type":'application/json',
               },
         });
-        return logoutUser.data;  
+        return logoutUser.data; 
     }
+   
 );
 export const authSlice = createSlice({
     name:'logoutUser',
     initialState,
     reducers :(builder) =>  {
         builder.addCase(userLogout.fulfilled, (state) => {
-            // Assuming you want to modify the state when logout is successful
             state.isLoggedIn = false;
+            
         });
 
     }

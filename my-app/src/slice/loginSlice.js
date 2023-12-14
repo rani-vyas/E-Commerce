@@ -3,7 +3,7 @@ import axios from "axios"
 
 const initialState = {
   isUserlogin : false,
-  data: [{}]
+  data: [{}],
 } 
 export const loginUser = createAsyncThunk(
   'loginUser',
@@ -19,16 +19,6 @@ export const loginUser = createAsyncThunk(
             },
             "data": data
     }) ;
-    /*const userId = await axios.get('http://127.0.0.1:8000/user/',
-      {
-        headers:{
-          'Accept' : 'application/json',
-          'Authorization' : `token ${token}`
-        },
-        'data':data
-      },
-    )*/
-    
 const token = Userdata.data.key;
 console.log(token)
 if (token) {
@@ -40,12 +30,13 @@ throw error
   }
 }
 )
+
 export const loginUserSlice = createSlice({
         name:'loginuser',
         initialState,
         reducers:{
           loginSuccess:(state,action)=>{
-            debugger;
+            //debugger;
           state.isUserlogin = true;
           state.data = action.payload;
           state.username = action.payload.username;
