@@ -88,7 +88,7 @@ export const Home = () => {
         </div>
         <div className="aboutus-div">
           <h5>Registered Office Address:</h5>
-          <p>Flipkart Internet Private Limited,Buildings Alyssa, Begonia &Clove Embassy Tech Village,Outer Ring Road, Devarabeesanahalli Village,Bengaluru, 560103,Karnataka, India CIN : U51109KA2012PTC066107 Telephone:<Link style={{textDecoration:'none'}}>+91 9602248900</Link></p>
+          <p>Flipkart Internet Private Limited,Buildings Alyssa, Begonia &Clove Embassy Tech Village,Outer Ring Road, Devarabeesanahalli Village,Bengaluru, 560103,Karnataka, India CIN : U51109KA2012PTC066107 Telephone:<Link style={{textDecoration:'none'}}>+91 1234567890</Link></p>
         </div>
 
       </div>

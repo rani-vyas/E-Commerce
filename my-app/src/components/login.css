@@ -1,5 +1,5 @@
 body{
-    background-color:blueviolet;
+    background-color:rgb(177, 146, 207);
 }
 #heading-div h1{
     text-align: center;
@@ -31,7 +31,7 @@ body{
 }
 #btn-id{
     padding: 15px;
-    background-color: rgb(231, 53, 178);
+    background-color: rgb(246, 218, 237);
     border: none;
     border-radius: 35px; 
 }

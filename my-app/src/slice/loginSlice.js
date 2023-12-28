@@ -1,13 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  isUserlogin : false,
+  isUserlogin : null,
+  error : null,
   data: [{}],
 } 
+debugger;
 export const loginUser = createAsyncThunk(
   'loginUser',
-  async (data) =>{
+  async (data,{rejectWithValue}) =>{
    //debugger;
   try{
     const Userdata = await axios({
@@ -22,11 +25,15 @@ export const loginUser = createAsyncThunk(
 const token = Userdata.data.key;
 console.log(token)
 if (token) {
+  debugger;
   localStorage.setItem('token', token);
+  console.log('logintoken : ',token)
+  useNavigate('/home')
+ 
 }
 return Userdata;
   }catch(error){
-throw error
+    return rejectWithValue(error.response.data)
   }
 }
 )
@@ -34,24 +41,19 @@ throw error
 export const loginUserSlice = createSlice({
         name:'loginuser',
         initialState,
-        reducers:{
-          loginSuccess:(state,action)=>{
-            //debugger;
-          state.isUserlogin = true;
-          state.data = action.payload;
-          state.username = action.payload.username;
-          }
-        },
+        reducers:{},
         extraReducers:(builder) =>{
           builder.addCase(loginUser.fulfilled,(state,action)=>{
-           state.data = action.payload
-           state.isUserlogin = true;
+            debugger
+          state.isUserlogin = action.payload;
+          state.error = null
           }).addCase(loginUser.rejected,(state,action)=>{
-            state.isUserlogin = false;
+            debugger
+            state.isUserlogin = null;
             state.data = action.error.message || 'userlogin Failed'
           })
         }
 })
-export const {loginSuccess} = loginUserSlice.actions;
+//export const {loginSuccess} = loginUserSlice.actions;
 export default loginUserSlice.reducer;
 
