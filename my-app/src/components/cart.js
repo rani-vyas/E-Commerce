@@ -9,7 +9,7 @@ import {  PlaceOrder, fetchOrders } from "../slice/ordersSlice";
 
 export function Cart(){ 
 const [ItemQuantities,setItemQuantites] = useState({})
-const [user,setUser] = useState('');
+const [user,setUser] = useState('')
 const [product,setProduct] =useState('');
 const [product_qty,setproduct_qty] = useState()
 

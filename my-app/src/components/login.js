@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './login.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {  loginSuccess, loginUser } from "../slice/loginSlice";
 import { userLogout } from "../slice/logoutSlice";
 
 export const LogIn = () =>{
+  const navigation = useNavigate()
   const [Username,setuserName] = useState('');
   const [email,setEmail]= useState('');
   const [password,setPassword]= useState('');
@@ -32,6 +33,7 @@ console.log(Username)
 console.log(email)
 console.log(password)
       dispatch(loginUser(logindata));
+      navigation('/home')
     }catch{
       dispatch(loginUser(errors))
      /* if(error.response && error.response.data && error.response.data.username){

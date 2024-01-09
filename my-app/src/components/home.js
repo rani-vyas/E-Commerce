@@ -45,7 +45,6 @@ export const Home = () => {
  
                  { data.map((item,index)=>
               <div className="image-div" key={index}>
-                
                 <img
                   src={item.image}            
                   className="img-fluid"
