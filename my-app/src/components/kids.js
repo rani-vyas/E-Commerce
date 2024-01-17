@@ -1,19 +1,33 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchProductById } from "../slice/productSlice";
-import { addtoCart } from "../slice/cartSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchProduct } from "../slice/productSlice";
+import { addtoCart, fetchCartData } from "../slice/cartSlice";
 import './kids.css'
 export default function KidsClothes(){
+    const navigate = useNavigate()
             const data = useSelector(state => state.Product.data)
             const dispatch = useDispatch()
            
             useEffect(()=>{
-             dispatch(fetchProductById({}))
+                debugger;
+             dispatch(fetchProduct({}))
             },[])
-            const handleAddToCart = (product) => {
-             dispatch(addtoCart(product));
-             console.log(product)
+           const handleAddToCart = async(product) => {   
+    console.log("Product:" , product)
+    debugger;
+    const newItem = {
+        
+        'user' : 1,
+        'image' : product.image,
+        'product' : product.id,
+        'product_qty' : product.product_qty
+    }
+     
+  dispatch(addtoCart(newItem))
+  dispatch(fetchCartData(newItem));
+    navigate('/cart');
+    
            };
     return(
         <>

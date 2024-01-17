@@ -1,4 +1,4 @@
-import { configureStore} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware, } from "@reduxjs/toolkit";
 import categorySlice from "./slice/categorySlice";
 import cartSlice from "./slice/cartSlice";
 import productSlice from "./slice/productSlice";
@@ -18,5 +18,4 @@ export const store = configureStore({
     carts:cartSlice,
     Orders: OrderSlice,
   },
-
 })

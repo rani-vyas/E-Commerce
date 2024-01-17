@@ -7,13 +7,13 @@ const initialState = {
     data:[]
 }
 
-export const fetchProductById = createAsyncThunk(
+export const fetchProduct = createAsyncThunk(
     'fetchproduct',
     async()=>{
-     //   debugger;
+    
      
-     const token = localStorage.getItem('token')
-     console.log('producttoken=' , token)
+    const token = localStorage.getItem('token')
+    console.log('producttoken=' , token)
     const {data} =  await axios.get('http://127.0.0.1:8000/product/',{
         headers:{
             'Authorization':` Token ${ token } `,
@@ -22,24 +22,22 @@ export const fetchProductById = createAsyncThunk(
         }
     })
     return data.results
-    
 }
 )
 export const ProductSlice = createSlice({
     name:'FetchProduct',
     initialState,
     reducers:{
-        showProduct(state , action){
+        /*showProduct(state , action){
             return state.data = action.payload;
-        },
-       
+        },*/    
     },
     extraReducers : (builder)=>{
-        builder.addCase(fetchProductById.fulfilled,(state,action)=>{
+        builder.addCase(fetchProduct.fulfilled,(state,action)=>{
           state.data=action.payload;
           state.isUserAuthenticated = true;
         })
     }
 })
-export const {showProduct} = ProductSlice.actions
+//export const {showProduct} = ProductSlice.actions
 export default ProductSlice.reducer

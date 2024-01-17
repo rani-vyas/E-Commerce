@@ -14,7 +14,7 @@ import { AboutUs } from "./components/about";
 import { Contact } from "./components/contact";
 import MensFashion from "./components/mensfashion";
 import KidsClothes from "./components/kids";
-import { Cart } from "./components/cart";
+
 import { store } from "./store";
 import { Provider } from "react-redux";
 import { Social } from "./components/twitter";
@@ -25,6 +25,8 @@ import { LogOut } from "./components/logout";
 import { LogIn } from "./components/login";
 import { Products } from "./components/product";
 import { Frontpage } from "./components/signuplogin";
+import { Cart } from "./components/cart";
+
 
 
 function App(){
@@ -51,7 +53,7 @@ function App(){
           <Route path="/womens" element={<WomensCategory/>}/>
           <Route path="/mensfashion" element={<MensFashion/>}/>
           <Route path='/kids' element={<KidsClothes/>}/>
-          <Route path="/cart" element={< Cart/>}/>      
+          <Route path="/cart" element={<Cart/>}/>      
           <Route path="/help"  element={<Helpdesk/>}/>
           <Route path="/social" element={<Social/>}/>
           <Route path="/payment" element={<Payment/>}/>

@@ -32,7 +32,7 @@ export const userSlice = createSlice({
     extraReducers :(builder) => {
        // debugger;
       builder.addCase(registerUsers.fulfilled,(state,action)=>{
-        debugger
+       // debugger
         state.user = action.payload;
         state.error = null
       

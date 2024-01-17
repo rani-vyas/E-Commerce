@@ -22,7 +22,6 @@ export const LogIn = () =>{
   
   const handlelogin = async(e) =>{
     e.preventDefault();
-    debugger
     try{
       const logindata = {
         username: Username,
@@ -84,6 +83,7 @@ const handleChangeUsername = (e) =>{
      const handleCheckUsername = () =>{
         if(Username == ''){
             setusernameError('must included username')
+    
         }
         else{
             setusernameError('')
@@ -103,8 +103,6 @@ const handleChangeUsername = (e) =>{
       }
     }
      const handleCheckpassword = () =>{
-      debugger
-    
      if(!password){
         setPasswordError('This field is required.')
     }else

@@ -7,7 +7,6 @@ const initialState = {
   error : null,
   data: [{}],
 } 
-debugger;
 export const loginUser = createAsyncThunk(
   'loginUser',
   async (data,{rejectWithValue}) =>{
@@ -25,7 +24,6 @@ export const loginUser = createAsyncThunk(
 const token = Userdata.data.key;
 console.log(token)
 if (token) {
-  debugger;
   localStorage.setItem('token', token);
   console.log('logintoken : ',token)
   useNavigate('/home')
